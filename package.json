@@ -1,0 +1,39 @@
+{
+  "name": "geoapp",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "My App is  an test from electron",
+  "license": "MIT",
+  "author": "jimmy codder",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev electron .",
+    "build": "cross-env NODE_ENV=prod electron-builder -p always",
+    "build:dir": "cross-env NODE_ENV=prod electron-builder --dir"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "mousetrap": "^1.6.5"
+  },
+  "devDependencies": {
+    "electron": "^9.0.4",
+    "electron-builder": "^22.7.0",
+    "electron-reload": "^1.5.0",
+    "electron-updater": "^4.3.1"
+  },
+  "build": {
+    "appId": "br.com.alluminox.geoapp",
+    "productName": "geoapp",
+    "publish": {
+      "provider": "github",
+      "owner": "Alluminox",
+      "repo": "electron-test"
+    },
+    "directories": {
+      "output": "./dist"
+    },
+    "win": {
+      "icon": "tray.png",
+      "target": "nsis"
+    }
+  }
+}

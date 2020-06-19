@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My App Electron</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="renderer.js"></script>
+</head>
+<body>  
+    <div id="app">
+      <h1>Electron App</h1>
+      <h2>Don\'t stopp (;</h2>
+      <ul>
+        <li><a href="#" @click.prevent="minimizar" id="1" >Minimizar</a></li>
+        <li><a href="#" @click.prevent="maximizar" id="" >Maximizar</a></li>
+        <li><a href="#" @click.prevent="fullscreen" id="" >Full Screen</a></li>
+        <li><a href="#" @click.prevent="fechar" id="" >Fechar</a></li>
+      </ul>
+     
+    </div>
+</body>
+</html>
