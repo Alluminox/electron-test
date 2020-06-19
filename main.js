@@ -5,11 +5,11 @@ const { BrowserWindow, app, Tray, Menu, globalShortcut, dialog } = require("elec
 const { autoUpdater } = require("electron-updater")
 
 // HOT-HEALOAD da webview(HTML, CSS, JS)
-if (process.env.NODE_ENV === 'dev') {
+// if (process.env.NODE_ENV === 'dev') {
 
-  const electronReload = require('electron-reload');
-  electronReload(__dirname);
-}
+//   const electronReload = require('electron-reload');
+//   electronReload(__dirname);
+// }
 
 // Para que as notificações funcionem no Windows 10!
 app.setAppUserModelId('br.com.alluminox.geoapp');
