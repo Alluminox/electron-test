@@ -1,6 +1,6 @@
 {
   "name": "geoapp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "main.js",
   "description": "My App is  an test from electron",
   "license": "MIT",

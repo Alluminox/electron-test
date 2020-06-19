@@ -1,7 +1,8 @@
 const path = require("path");
 const url = require("url");
 
-const { BrowserWindow, app, Tray, Menu, globalShortcut } = require("electron");
+const { BrowserWindow, app, Tray, Menu, globalShortcut, dialog } = require("electron");
+const { autoUpdater } = require("electron-updater")
 
 // HOT-HEALOAD da webview(HTML, CSS, JS)
 if (process.env.NODE_ENV === 'dev') {
@@ -115,10 +116,50 @@ const createWindow = () => {
   })
 }
 
+const sendStatusToWindow = (detail) => {
+  const config = {
+    type: 'info',
+    buttons: ['Ok'],
+    title: 'Autalização do aplicativo!',
+    message: 'Detalhes',
+    detail
+  }
+  dialog.showMessageBox(config)
+}
+
+
+const checkUpdates = () => {
+  autoUpdater.checkForUpdatesAndNotify();
+
+  autoUpdater.on('checking-for-update', () => {
+    sendStatusToWindow('Checking for update!')
+  })
+
+  autoUpdater.on('update-available', () => {
+    sendStatusToWindow('Available update')
+  })
+
+  autoUpdater.on('update-not-available', () => {
+    sendStatusToWindow('Unavailable update')
+  })
+
+  autoUpdater.on('error', () => {
+    sendStatusToWindow('Error into auto-update')
+  });
+
+  autoUpdater.on('download-progress', progress => {
+    const log = `Download speed ${progress.bytesPerSecond} - Downloaded ${progress.percent} - ${progress.transferred}/ ${progress.total}`
+    sendStatusToWindow(log)
+  })
+  autoUpdater.on('update-downloaded', info => {
+    sendStatusToWindow('Update downloaded') // Finishing
+  })
+
+}
 
 (async () => {
   await app.whenReady()
-
+  checkUpdates();
   createWindow();
 
   app.on('window-all-closed', () => {
